@@ -6,12 +6,12 @@ struct Stack
    int curr_size;
    struct Node *top;
 
-}*stack;
+};
 struct Node 
 {
    int value;
    struct Node *next;
-}
+};
 
 int IsEmpty(struct Stack *s)
 {
@@ -43,23 +43,23 @@ int IsFull(struct Stack *s)
 void Push(struct Stack *s)
 {
   
-  if(stack->curr_size!=stack->size)
+  if(s->curr_size!=s->size)
    {
-        struct Node *p=(struct Node *)malloc(sizeof(Node));
+        struct Node *p=(struct Node *)malloc(sizeof(struct Node));
         scanf("%d",&p->value);
-        p->next=stack->top;
-        stack->top=p;
+        p->next=s->top;
+        s->top=p;
         p=NULL;
-        stack->curr_size++;
+        s->curr_size++;
    }
 }
 void Pop(struct Stack *s)
 {
-   struct Node *p= stack->top->next;
-   stack->top=NULL;
-   stack->top=p;
+   struct Node *p= s->top->next;
+   s->top=NULL;
+   s->top=p;
    p=NULL;
-   stack->curr_size--;
+   s->curr_size--;
 }
 
 void Peek(struct Stack *s, int index)
@@ -84,8 +84,13 @@ void Peek(struct Stack *s, int index)
     return NULL;
 
 }
-void Create(struct Stack *s, int n)
+struct Stack * Create(int n)
 {
+   struct Stack *s,
+   stack=(struct Stack *)malloc(sizeof(struct Stack));
+   printf("Enter Size of Stack");
+   scanf("%d",&s->size);
+   s->top=NULL;
    printf("enter number of elements to be inserted into stack");
    scanf("%d",&n);
    if(n>s->size)
@@ -97,22 +102,21 @@ void Create(struct Stack *s, int n)
    {
       for(int i=0;i<n;i++)
       {
-        struct Node *p=(struct Node *)malloc(sizeof(Node));
+        struct Node *p=(struct Node *)malloc(sizeof(struct Node));
         scanf("%d",&p->value);
-        p->next=stack->top;
-        stack->top=p;
+        p->next=s->top;
+        s->top=p;
         p=NULL;
-        stack->curr_size++; 
+        s->curr_size++; 
       }
    }
    return s;
 }
 
+
 void main()
 {
   
-  stack=(struct Stack *)malloc(sizeof(Stack));
-  scanf("%d",&stack->size);
-  stack->top=NULL;
+ 
     
 }
