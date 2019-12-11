@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 struct Stack
 {
    int size;
@@ -15,7 +16,7 @@ struct Node
 
 int IsEmpty(struct Stack *s)
 {
-   if(s->size!=NULL)
+   if(s->curr_size==0)
    {
        return 1;
    }
@@ -62,7 +63,7 @@ void Pop(struct Stack *s)
    s->curr_size--;
 }
 
-void Peek(struct Stack *s, int index)
+int Peek(struct Stack *s, int index)
 {
     int curr_index=0;
     if(!IsEmpty(s))
@@ -81,15 +82,23 @@ void Peek(struct Stack *s, int index)
          return p->value;
          
      }
-    return NULL;
+    return -1;
 
+}
+int Top(struct Stack *s)
+{
+   if(s->top!=NULL)
+      return s->top->value;
+   return -1;
+  
 }
 struct Stack * Create(int n)
 {
-   struct Stack *s,
-   stack=(struct Stack *)malloc(sizeof(struct Stack));
+   
+   struct Stack *s =(struct Stack *)malloc(sizeof(struct Stack));
    printf("Enter Size of Stack");
    scanf("%d",&s->size);
+   s->curr_size=0;
    s->top=NULL;
    printf("enter number of elements to be inserted into stack");
    scanf("%d",&n);
@@ -117,6 +126,11 @@ struct Stack * Create(int n)
 void main()
 {
   
- 
-    
+  struct Stack *stack=Create(5);
+  int n;
+  printf("Enter Number of charecters");
+  scanf("%d",&n);
+  int str[n];
+  gets(str);
+  
 }
