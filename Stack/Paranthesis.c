@@ -1,85 +1,79 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-struct Stack
+typedef struct Stack
 {
    int size;
    int curr_size;
    struct Node *top;
 
-};
+}stack;
+stack *s;
 struct Node 
 {
    char value;
    struct Node *next;
 };
-void Push(struct Stack *s)
+void Push(char c)
 {
-  
-  if(s->curr_size!=s->size)
-   {
-        struct Node *p=(struct Node *)malloc(sizeof(struct Node));
-        scanf("%c",&p->value);
-        p->next=s->top;
-        s->top=p;
-        p=NULL;
-        s->curr_size++;
-   }
-}
-void Pop(struct Stack *s)
-{
-   struct Node *p= s->top->next;
-   s->top=NULL;
+   struct Node *p=(struct Node *)malloc(sizeof(struct Node));
+   p->value=c;
+   p->next=s->top;
    s->top=p;
-   p=NULL;
-   s->curr_size--;
+   s->curr_size++;
+}
+void Pop()
+{
+    if(s->top!=NULL)
+    {
+       s->top=s->top->next;
+       s->curr_size--;
+    }
+  
+
 }
 
-struct Stack * Create(int n)
-{
-   
-   struct Stack *s =(struct Stack *)malloc(sizeof(struct Stack));
-   scanf("%d",&s->size);
-   s->curr_size=0;
-   s->top=NULL;
-   return s;
-}
-int ParathesisMatch(char *str, struct Stack *stack)
+
+int ParathesisMatch(char *str)
 {
     for(int i=0;str[i]!='\0';i++)
     {
-       if(str[i]=='(')
-       {
-           push('(');
-       }
-       else if (str[i]==')')
-       {
-           pop();
-       }
-       else 
-        continue;
+
+      if(str[i]=='(')
+       Push('(');
+      else if (str[i]==')')
+       Pop();
+      else
+       continue;
+      
     }
-
-    if(stack->top==NULL)
-        return 1;
-    else 
-        return 0;
-
+   if(s->top==NULL)
+      return 1;
+   else 
+      return 0;
+  
 }
 
 int main()
 {
-  
-  int n;
-  printf("Enter Number of charecters");
+  int n,size;
+  printf("Enter number of charecters you want to enter");
   scanf("%d",&n);
-  struct Stack *stack=Create(n);
-  int str[n];
-  gets(str);
-  int result=ParathesisMatch(str,stack);
-  if(result)
-   printf("Paranthesis Matched");
+  char str[n];
+  printf("Enter string to check paranthesis match");
+  scanf("%s",str);
+  s=(stack *)malloc(sizeof(stack));
+  s->curr_size=0;
+  s->size=n;
+  s->top=NULL;
+  if(ParathesisMatch(str))
+  {
+    printf("Paranthesis Matched");
+  }
   else
-   printf("Mismatch");
-  return 0;
+  {
+   printf("Miss Match");
+  }
+  
 }
+
