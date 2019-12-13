@@ -14,6 +14,7 @@ struct Node
    char value;
    struct Node *next;
 };
+
 void Push(char c)
 {
    struct Node *p=(struct Node *)malloc(sizeof(struct Node));
@@ -33,15 +34,14 @@ void Pop()
 
 }
 
-
 int ParathesisMatch(char *str)
 {
     for(int i=0;str[i]!='\0';i++)
     {
 
-      if(str[i]=='(')
-       Push('(');
-      else if (str[i]==')')
+      if(str[i]=='('||str[i]=='['||str[i]=='{')
+       Push(str[i]);
+      else if (str[i]==')'&&s->top->value=='('||str[i]==']'&&s->top->value=='['||str[i]=='}'&&s->top->value=='{')
        Pop();
       else
        continue;
@@ -56,18 +56,11 @@ int ParathesisMatch(char *str)
 
 int main()
 {
-  int n,size;
-  
-  /*
-  printf("Enter string to check paranthesis match");
-  scanf("%s",str);
-  */
-  printf("Enter number of charecters you want to enter");
-  scanf("%d",&n);
-  char str[n];
+
+  char *str ="[[]][][][][]{}";
   s=(stack *)malloc(sizeof(stack));
   s->curr_size=0;
-  s->size=n;
+  s->size=strlen(str);
   s->top=NULL;
   if(ParathesisMatch(str))
   {
