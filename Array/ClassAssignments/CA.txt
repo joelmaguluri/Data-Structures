@@ -1,0 +1,7 @@
+1. Amortized analysis
+2. Check anagrams with XOR approach for all cases
+3. approach for 0 flip problem with two variable (prev , prev_prev)
+4.  improvemnt in space complexity of rain trap problem
+
+
+5. right most bit set
