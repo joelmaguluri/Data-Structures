@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-struct TreeNode{
-    struct TreeNode*left;
-    struct TreeNode*right;
-    int data;
-};
+#include "treeADT.h"
 
 int sumTree(struct TreeNode*root)
 {
