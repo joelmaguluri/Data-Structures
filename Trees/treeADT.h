@@ -7,14 +7,6 @@ struct TreeNode
     struct TreeNode *right;
     int data;
 };
-
-struct AdvancedTreeNode
-{
-    struct AdvancedTreeNode *left;
-    struct AdvancedTreeNode *right;
-    struct AdvancedTreeNode *next;
-    int data;
-};
 struct TreeNode *getSampleTree()
 {
     struct TreeNode *root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
@@ -32,34 +24,6 @@ struct TreeNode *getSampleTree()
     left->left = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     left->left->data = 4;
     left->right = (struct TreeNode *)malloc(sizeof(struct TreeNode));
-    left->right->data = 5;
-
-    right = left->right;
-    left = left->left;
-    left->left = NULL;
-    left->right = NULL;
-
-    right->left = NULL;
-    right->right = NULL;
-    return root;
-}
-struct AdvancedTreeNode *getSampleTreeAdvancedVersion()
-{
-    struct AdvancedTreeNode *root = (struct AdvancedTreeNode *)malloc(sizeof(struct AdvancedTreeNode));
-    root->data = 1;
-    root->left = (struct AdvancedTreeNode *)malloc(sizeof(struct AdvancedTreeNode));
-    root->left->data = 2;
-    root->right = (struct AdvancedTreeNode *)malloc(sizeof(struct AdvancedTreeNode));
-    root->right->data = 3;
-    struct AdvancedTreeNode *left = root->left;
-    struct AdvancedTreeNode *right = root->right;
-
-    right->left = NULL;
-    right->right = NULL;
-
-    left->left = (struct AdvancedTreeNode *)malloc(sizeof(struct AdvancedTreeNode));
-    left->left->data = 4;
-    left->right = (struct AdvancedTreeNode *)malloc(sizeof(struct AdvancedTreeNode));
     left->right->data = 5;
 
     right = left->right;
