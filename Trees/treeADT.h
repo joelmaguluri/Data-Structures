@@ -7,6 +7,13 @@ struct TreeNode
     struct TreeNode *right;
     int data;
 };
+
+struct DoublyLL
+{
+    int data;
+    struct DoublyLL *left;
+    struct DoublyLL *right;
+};
 struct TreeNode *getSampleTree()
 {
     struct TreeNode *root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
