@@ -6,6 +6,7 @@ struct TreeNode
     struct TreeNode *left;
     struct TreeNode *right;
     int data;
+    struct TreeNode *next;
 };
 
 struct DoublyLL
@@ -75,6 +76,7 @@ struct TreeNode *constructBinaryTree(int num)
     queue->top = NULL;
     struct TreeNode *root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     root->data = value;
+    root->next = NULL;
     root->left = NULL;
     root->right = NULL;
     enqueue(queue, root);
@@ -87,6 +89,7 @@ struct TreeNode *constructBinaryTree(int num)
             left->data = value;
             left->left = NULL;
             left->right = NULL;
+            left->next = NULL;
             curr_node->left = left;
             enqueue(queue, left);
         }
@@ -96,6 +99,7 @@ struct TreeNode *constructBinaryTree(int num)
             right->data = value;
             right->left = NULL;
             right->right = NULL;
+            right->next = NULL;
             curr_node->right = right;
             enqueue(queue, right);
         }
