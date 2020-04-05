@@ -106,3 +106,34 @@ struct TreeNode *constructBinaryTree(int num)
     }
     return root;
 }
+void printConnections(struct TreeNode *root)
+{
+    if (root)
+    {
+        struct TreeNode *temp = root;
+        while (temp != NULL)
+        {
+            printf("%d", temp->data);
+            temp = temp->next;
+        }
+        printf("\n");
+        printConnections(root->left);
+    }
+}
+void connectFullBinaryTree(struct TreeNode *root)
+{
+    if (root)
+    {
+        struct TreeNode *temp = root;
+        while (temp != NULL)
+        {
+
+            if (temp->left)
+                temp->left->next = temp->right;
+            if (temp->right && temp->next)
+                temp->right->next = temp->next->left;
+            temp = temp->next;
+        }
+        connectFullBinaryTree(root->left);
+    }
+}
