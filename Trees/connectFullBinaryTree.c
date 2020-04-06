@@ -19,20 +19,7 @@ void connectFullBinaryTree(struct TreeNode *root)
     connectFullBinaryTree(root->left);
   }
 }
-void printConnections(struct TreeNode *root)
-{
-  if (root)
-  {
-    struct TreeNode *temp = root;
-    while (temp != NULL)
-    {
-      printf("%d", temp->data);
-      temp = temp->next;
-    }
-    printf("\n");
-    printConnections(root->left);
-  }
-}
+
 void main()
 {
   struct TreeNode *root = constructBinaryTree(10);
