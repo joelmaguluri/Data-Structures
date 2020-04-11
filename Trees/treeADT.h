@@ -141,34 +141,32 @@ void connectFullBinaryTree(struct TreeNode *root)
 struct TreeNode *sampleBST()
 {
     struct TreeNode *root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
-    root->data = 10;
+    root->data = 7;
     struct TreeNode *temp = root;
     temp->left = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     temp = temp->left;
-    temp->data = 9;
-    temp->right = NULL;
+    temp->data = 5;
+    temp->right = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+    temp->right->data = 6;
+    temp->right->left = NULL;
+    temp->right->right = NULL;
     temp->left = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     temp = temp->left;
-    temp->data = 8;
-    temp->right = NULL;
-    temp->left = (struct TreeNode *)malloc(sizeof(struct TreeNode));
-    temp = temp->left;
-    temp->data = 7;
+    temp->data = 4;
     temp->right = NULL;
     temp->left = NULL;
     temp = root;
     temp->right = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     temp = temp->right;
-    temp->data = 11;
-    temp->left = NULL;
+    temp->data = 9;
+    temp->left = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+    temp->left->data = 8;
+    temp->left->left = NULL;
+    temp->left->right = NULL;
     temp->right = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     temp = temp->right;
     temp->data = 12;
     temp->left = NULL;
-    temp->right = (struct TreeNode *)malloc(sizeof(struct TreeNode));
-    temp = temp->right;
-    temp->data = 13;
-    temp->right = NULL;
     temp->left = NULL;
     return root;
 }
