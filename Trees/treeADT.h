@@ -170,3 +170,13 @@ struct TreeNode *sampleBST()
     temp->left = NULL;
     return root;
 }
+
+void inorderTraversal(struct TreeNode *root)
+{
+    if (root)
+    {
+        inorderTraversal(root->left);
+        printf("%d\t", root->data);
+        inorderTraversal(root->right);
+    }
+}
