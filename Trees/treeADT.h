@@ -180,3 +180,17 @@ void inorderTraversal(struct TreeNode *root)
         inorderTraversal(root->right);
     }
 }
+
+struct TreeNode *arrayToBST(struct TreeNode *root, int *arr, int start, int end)
+{
+    if (start <= end)
+    {
+        root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+        int mid = (start + end) / 2;
+        root->data = arr[mid];
+        root->left = arrayToBST(root, arr, start, mid - 1);
+        root->right = arrayToBST(root, arr, mid + 1, end);
+        return root;
+    }
+    return NULL;
+}
