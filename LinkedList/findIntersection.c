@@ -2,6 +2,8 @@
 
 int findIntersection(struct ListNode *l1, struct ListNode *l2)
 {
+  if (l1 == NULL || l2 == NULL)
+    return -1;
   int l1len = LLlength(l1); //finding length of l1
   int l2len = LLlength(l2); //finding length of l2
   int diff = 0;
