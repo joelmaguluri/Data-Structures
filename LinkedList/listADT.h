@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct DoublyLinkedListNode
+{
+  int data;
+  struct DoublyLinkedListNode *next;
+  struct DoublyLinkedListNode *prev;
+};
 struct ListNode
 {
   int data;
@@ -75,4 +81,28 @@ struct ListNode *createLinkedList(int numofnodes)
     i++;
   }
   return head;
+}
+
+struct ListNode *reverseLL(struct ListNode *head)
+{
+  struct ListNode *p = NULL, *q = NULL, *r = NULL;
+  if (head != NULL)
+    p = head;
+  else
+    return head;
+  q = p->next;
+  p->next = NULL;
+  if (q != NULL)
+  {
+    r = q->next;
+  }
+  while (q != NULL)
+  {
+    q->next = p;
+    p = q;
+    q = r;
+    if (r != NULL)
+      r = r->next;
+  }
+  return p;
 }

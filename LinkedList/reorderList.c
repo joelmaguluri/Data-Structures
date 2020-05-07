@@ -1,11 +1,10 @@
 #include "listADT.h"
-
 struct ListNode *MiddleElement(struct ListNode *head)
 {
   struct ListNode *sp, *fp; // sp->slow pointer fp->fast Pointer
   sp = fp = head;           //setting both sp & fp to point to head
   if (sp->next == NULL)
-    return head->data;                   // if single node return head
+    return head;                         // if single node return head
   while (fp != NULL && fp->next != NULL) //till fp is last node or fp points to null repeat the process
   {
     sp = sp->next;       // move slow pointer by one node
@@ -15,32 +14,26 @@ struct ListNode *MiddleElement(struct ListNode *head)
 }
 void reorderList(struct ListNode *head)
 {
-  struct ListNode *t1, *t2, *l1, *l2;
-  l2 = MiddleElement(head)->next;
-  if (l2->next = NULL)
+  struct ListNode *p = MiddleElement(head);
+  struct ListNode *q = reverseLL(p->next);
+  p->next = NULL;
+  p = head;
+  struct ListNode *p_next = NULL, *q_next = NULL;
+  while (q != NULL)
   {
-    t2 = head->next;
-    t1 = head;
-    t1->next = l2;
-    l2->next = t2;
-  }
-  else
-  {
-    t1 = l2->next;
-    t2 = t1->next;
-    while (l2 != NULL && l2->next != NULL)
-    {
-      t1->next = l2;
-      l2->next = t2;
-      l2 = t2;
-      if (l2 != NULL)
-        t1 = l2->next;
-      if (t1)
-        t2 = t1->next;
-    }
+    p_next = p->next;
+    q_next = q->next;
+    p->next = q;
+    q->next = p_next;
+    p = p_next;
+    q = q_next;
   }
 }
 
-1 2 3 4 5
+void main()
+{
+  struct ListNode *head = getSampleLL();
+  reorderList(head);
 
-    6 7 8 9
+  traverse(head);
+}
